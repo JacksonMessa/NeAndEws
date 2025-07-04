@@ -1,0 +1,74 @@
+@use "../../styles/variables" as v;
+
+
+
+.row{
+
+    height: 100%;
+    
+
+    .col{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.main{
+            background-color: v.$background-color;
+            position: relative;
+
+            h1{
+                font-weight: bold;
+                font-size: 45px;
+                color: v.$primary-color;
+            }
+
+            form{
+                margin-top: 35px;
+                padding: 0 100px;
+
+                label{
+                    font-size: 25px;
+                    font-weight: 500;
+                    text-align: start;
+                    color: v.$primary-color;
+                }
+
+                .btn-container{
+                    margin-top: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+            }
+
+        }
+
+        &.secondary{
+            background-color: v.$secondary-color;
+            overflow: hidden;
+
+            img{
+                height: 100%;
+            }
+
+        }
+
+        
+    }
+
+    
+
+}
+
+@media(max-width:425px){
+    .row{
+        .col{
+            &.secondary{
+                height: 5%;
+            }
+        }
+    }    
+}
+
+
+
