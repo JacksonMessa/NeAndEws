@@ -9,6 +9,6 @@ import { Component, Input } from '@angular/core';
 export class DefaultButton {
   @Input() text:string = "";
   @Input() btnClass:string = "normal";
-
+  @Input() disabled:boolean = false;
   
 }

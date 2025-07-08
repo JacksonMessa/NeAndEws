@@ -9,13 +9,22 @@
             <div>
                 <img ngSrc="/assets/logo.png" height="150" width="400">
                 <h1>Log in to your account and relax with fresh news</h1>
-                <form>
-                    <label>Username</label>
-                    <input class="form-control">
-                    <label>Password</label>
-                    <input class="form-control" type="password">
+                <form (submit)="onSubmit()" [formGroup]="loginForm">
+                    <label for="username">Username</label>
+                    <input class="form-control"
+                        name="username"
+                        formControlName="username"
+                        type="text"
+                        placeholder="type your username"
+                    >
+                    <label for="password">Password</label>
+                    <input class="form-control" 
+                        name="password"
+                        formControlName="password"
+                        type="password"
+                        placeholder="type your password">
                     <div class="btn-container">
-                        <default-button text="Log In"/>
+                        <default-button text="Log In" [disabled] = "!loginForm.valid"/>
                         <default-button text="Create Your Account" btnClass="outline"/>
                     </div>
                     
