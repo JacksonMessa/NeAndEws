@@ -1,0 +1,25 @@
+<div class="row text-center">
+    <div class="col col-lg-3  secondary">
+        <div>
+            <img src="/assets/man_reading.png">
+        </div>
+    </div>
+    <div class="col col-lg-6  main">
+        <div>
+            <img ngSrc="/assets/logo.png" height="150" width="400">
+            <h1>{{title}}</h1>
+            <div class="form-container">
+                <ng-content/>
+                <div class="btn-container">
+                    <default-button [text]="submitButtonText" [disabled] = "disableSubmitButton" (click)="onSubmit()"/>
+                    <default-button [text]="navigateButtonText" btnClass="outline"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-lg-3  secondary">
+        <div>
+            <img src="/assets/woman_reading.png">
+        </div>
+    </div>
+</div>

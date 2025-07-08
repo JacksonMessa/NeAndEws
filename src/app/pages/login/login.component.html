@@ -1,15 +1,12 @@
 
-    <div class="row text-center">
-        <div class="col col-lg-3  secondary">
-            <div>
-                <img src="/assets/man_reading.png">
-            </div>
-        </div>
-        <div class="col col-lg-6  main">
-            <div>
-                <img ngSrc="/assets/logo.png" height="150" width="400">
-                <h1>Log in to your account and relax with fresh news</h1>
-                <form (submit)="onSubmit()" [formGroup]="loginForm">
+<user-forms-layout 
+    title="Log in to your account and relax with fresh news"
+    submitButtonText="Log in"
+    navigateButtonText="Create Your Account"
+    [disableSubmitButton]="!loginForm.valid"
+    (submit)="onSubmit()"
+    >
+    <form [formGroup]="loginForm">
                     <label for="username">Username</label>
                     <input class="form-control"
                         name="username"
@@ -23,17 +20,7 @@
                         formControlName="password"
                         type="password"
                         placeholder="type your password">
-                    <div class="btn-container">
-                        <default-button text="Log In" [disabled] = "!loginForm.valid"/>
-                        <default-button text="Create Your Account" btnClass="outline"/>
-                    </div>
-                    
                 </form>
-            </div>
-        </div>
-        <div class="col col-lg-3  secondary">
-            <div>
-                <img src="/assets/woman_reading.png">
-            </div>
-        </div>
-    </div>
+</user-forms-layout>
+                
+            

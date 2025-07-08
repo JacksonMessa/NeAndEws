@@ -4,14 +4,14 @@ import { DefaultButton } from "../../components/default-button/default-button";
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { UserFormsLayoutComponent } from "../../components/user-forms-layout.component/user-forms-layout.component";
 
 @Component({
   selector: 'app-login',
   imports: [
-    NgOptimizedImage,
-    DefaultButton,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    UserFormsLayoutComponent
+],
   providers: [UserService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
