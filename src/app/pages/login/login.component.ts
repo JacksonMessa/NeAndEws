@@ -1,10 +1,10 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import { DefaultButton } from "../../components/default-button/default-button";
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserFormsLayoutComponent } from "../../components/user-forms-layout.component/user-forms-layout.component";
+import { Router } from '@angular/router';
+import { LoginFormData } from '../../types/login-form-data.type';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,8 @@ export class LoginComponent {
 
 
   constructor(private userService: UserService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
@@ -34,12 +35,14 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      let data: { username: string, password: string } = this.loginForm.value;
+      let data: LoginFormData = this.loginForm.value;
       this.userService.login(data.username, data.password).subscribe({
         next: () => this.toastrService.success("Login Sucefully"),
         error: () => this.toastrService.error("Login Failed. Please check that you have entered your username and password correctly.")
       });
     }
   }
+
+  
 
 }
