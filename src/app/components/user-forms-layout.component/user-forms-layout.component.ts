@@ -18,10 +18,17 @@ export class UserFormsLayoutComponent {
   @Input() navigateButtonText:string ="";
   @Input() disableSubmitButton:boolean = false;
   @Output() submit = new EventEmitter();
+  @Output() navigate = new EventEmitter();
+
   
 
   onSubmit(){
     this.submit.emit()
   }
+
+  onNavigate(){
+    this.navigate.emit()
+  }
+
 
 }

@@ -36,13 +36,15 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       let data: LoginFormData = this.loginForm.value;
-      this.userService.login(data.username, data.password).subscribe({
+      this.userService.login(data).subscribe({
         next: () => this.toastrService.success("Login Sucefully"),
         error: () => this.toastrService.error("Login Failed. Please check that you have entered your username and password correctly.")
       });
     }
   }
 
-  
+  onNavigate(){
+    this.router.navigate(["register"])
+  }
 
 }

@@ -5,6 +5,7 @@
     navigateButtonText="Create Your Account"
     [disableSubmitButton]="!loginForm.valid"
     (submit)="onSubmit()"
+    (navigate)="onNavigate()"
     >
     <form [formGroup]="loginForm">
                     <label for="username">Username</label>
@@ -20,7 +21,7 @@
                         formControlName="password"
                         type="password"
                         placeholder="type your password">
-                </form>
+    </form>
 </user-forms-layout>
                 
             

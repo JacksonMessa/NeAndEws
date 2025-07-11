@@ -1,6 +1,6 @@
-type Role = "WRITER" | "READER";
+export type UserRole = "WRITER" | "READER";
 
 export type User = {
     username:string,
-    role:Role
+    role:UserRole
 }

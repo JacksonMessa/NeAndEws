@@ -1,0 +1,43 @@
+
+<user-forms-layout 
+    title="Create your account and relax with fresh news"
+    submitButtonText="Register"
+    navigateButtonText="Log in to your account"
+    [disableSubmitButton]="!registerForm.valid"
+    (submit)="onSubmit()"
+    (navigate)="onNavigate()"
+    >
+    <form [formGroup]="registerForm">
+                    <label for="username">Username</label>
+                    <input class="form-control"
+                        name="username"
+                        formControlName="username"
+                        type="text"
+                        placeholder="type your username"
+                    >
+                    <label for="password">Password</label>
+                    <input class="form-control" 
+                        name="password"
+                        formControlName="password"
+                        type="password"
+                        placeholder="type your password">
+                    <label for="passwordConfirm">Confirm Your Password</label>
+                    <input class="form-control" 
+                        name="passwordConfirm"
+                        formControlName="passwordConfirm"
+                        type="password"
+                        placeholder="type your password again">
+                    <label for="password">Role</label>
+                    <select
+                        class="form-select" 
+                        name="role"
+                        formControlName="role">
+                        <option selected disabled hidden value="">Select your role</option>
+                        <option value="READER">Reader</option>
+                        <option value="WRITER">Writer</option>
+                    </select>       
+    </form>
+
+</user-forms-layout>
+                
+            
