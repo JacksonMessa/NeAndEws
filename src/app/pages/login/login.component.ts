@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { UserFormsLayoutComponent } from "../../components/user-forms-layout.component/user-forms-layout.component";
+import { UserFormsLayoutComponent } from "../../components/user-forms-layout/user-forms-layout.component";
 import { Router } from '@angular/router';
 import { LoginFormData } from '../../types/login-form-data.type';
 
