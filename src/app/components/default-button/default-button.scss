@@ -46,4 +46,20 @@ button {
         }
     }
 
+    &.outline-white {
+        border: solid 1px white;
+        color: white;
+        background-color: transparent;
+
+        &:not(:disabled) {
+            &:hover {
+                opacity: 75%;
+            }
+
+            &:active {
+                opacity: 55%;
+            }
+        }
+    }
+
 }
