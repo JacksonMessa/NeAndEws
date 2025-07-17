@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img ngSrc="/assets/icon.png" height="45" width="45" href="/home"><span class="navbar-brand">Ne&ews</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a [ngClass]="['nav-link' , path==='home' ? 'active' : '']" href="/home">Home</a>
+        </li>
+        @if(isWriter){
+          <li class="nav-item">
+            <a [ngClass]="['nav-link' , path==='my-news' ? 'active' : '']" href="/my-news">My News</a>
+          </li>
+        }
+      </ul>
+      <div class="right-content">
+        <default-button text="Log Out" btnClass="outline-white" (click)="logout()"/>
+      </div>
+    </div>
+  </div>
+</nav>

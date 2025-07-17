@@ -1,0 +1,27 @@
+@use "../../styles/variables" as v;
+
+.navbar {
+    background-color: v.$primary_color;
+
+    .navbar-brand{
+        padding: 0;
+    }
+
+    .right-content {
+        width: 200px;
+    }
+}
+
+@media(max-width:575.5px){
+    .navbar {
+
+        .nav-link{
+            text-align:center;
+        }
+
+        .right-content {
+            width: 100%;
+        }
+    }
+
+}

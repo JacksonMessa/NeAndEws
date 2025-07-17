@@ -13,26 +13,26 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  readonly apiURL : string = "http://localhost:8080/news-api/user"
+  readonly apiURL: string = "http://localhost:8080/news-api/user"
 
   constructor(private httpClient: HttpClient,
-              private router:Router
+    private router: Router
   ) { }
 
   login(data: LoginFormData,
-  ){
-    return this.httpClient.post<LoginResponse>(this.apiURL+"/login",data).pipe(
+  ) {
+    return this.httpClient.post<LoginResponse>(this.apiURL + "/login", data).pipe(
       tap((value) => {
-        sessionStorage.setItem("auth-token",value.token);
-        sessionStorage.setItem("username",value.user.username);
-        sessionStorage.setItem("user-role",value.user.role);
+        sessionStorage.setItem("auth-token", value.token);
+        sessionStorage.setItem("username", value.user.username);
+        sessionStorage.setItem("user-role", value.user.role);
         this.router.navigate(["/home"]);
       })
     )
   }
 
-  register(data: RegisterFormData){
-    return this.httpClient.post<string>(this.apiURL+"/register",data).pipe(
+  register(data: RegisterFormData) {
+    return this.httpClient.post<string>(this.apiURL + "/register", data).pipe(
       catchError((value) => {
         console.log(value.error);
         return throwError(() => new Error(value.error.message));
@@ -41,6 +41,13 @@ export class UserService {
         return this.login({ username: data.username, password: data.password })
       }),
     )
+  }
+
+  logout() {
+    sessionStorage.removeItem("auth-token");
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("user-role");
+    this.router.navigate(["/login"]);
   }
 
 }
