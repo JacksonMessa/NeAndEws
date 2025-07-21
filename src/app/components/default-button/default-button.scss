@@ -1,10 +1,23 @@
 @use "../../styles/variables" as v;
 
 button {
-    border-radius: 30px;
-    font-size: 30px;
-    width: 100%;
-    font-weight: 600;
+
+    &.medium{
+        border-radius: 30px;
+        font-size: 30px;
+        width: 100%;
+        font-weight: 600;
+    }
+
+    &.small{
+        border-radius: 20px;
+        font-size: 20px;
+        width: 100%;
+        font-weight: 600;
+    }
+
+    
+    
 
     &:disabled {
         opacity: 0.75;
@@ -61,5 +74,7 @@ button {
             }
         }
     }
+
+    
 
 }

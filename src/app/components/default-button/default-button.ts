@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-type BtnClass = "normal"|"outline"|"outline-white"
+type BtnStyle = "normal"|"outline"|"outline-white"|"small"
+type Size = "medium"|"small";
 
 @Component({
   selector: 'default-button',
@@ -10,9 +11,15 @@ type BtnClass = "normal"|"outline"|"outline-white"
 })
 export class DefaultButton {
   @Input() text:string = "";
-  @Input() btnClass:BtnClass = "normal";
+  btnClass!:string;
+  @Input() btnStyle:BtnStyle = "normal";
+  @Input() size:Size = "medium";
   @Input() disabled:boolean = false;
   @Output() click = new EventEmitter();
+
+  ngOnInit(){
+    this.btnClass = this.btnStyle + " " + this.size;
+  }
 
   onClick(){
     this.click.emit()
