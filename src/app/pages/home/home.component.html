@@ -1,1 +1,17 @@
 <navbar/>
+<main>
+    <section class="news-section">
+        @for(news of listNews$ | async; track news){
+            <div class="news">
+                <h1>{{news.title}}</h1>
+                <span>{{news.body}}</span>
+                <div class="verMaisbutton">
+                    <default-button btnStyle="outline" text="Ver Mais" size="small"></default-button>
+                </div>
+            </div>
+        }
+        @empty {
+            <h1 class="empty">No news was found</h1>
+        }
+    </section>
+</main>
