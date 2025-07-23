@@ -1,6 +1,11 @@
 @use "../../styles/variables" as v;
+@import "bootstrap-icons/font/bootstrap-icons";
 
 button {
+
+    span{
+        margin-left: 10px;
+    }
 
     &.medium{
         border-radius: 30px;

@@ -1,1 +1,6 @@
-<button class="{{btnClass}}" [disabled]="disabled" click="onClick()">{{text}}</button>
+<button class="{{btnClass}}" [disabled]="disabled" click="onClick()">
+    {{text}}
+    @if(icon){
+        <span [ngClass]="['bi','bi-'+icon]" ></span>
+    }
+</button>
