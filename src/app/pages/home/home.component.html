@@ -6,7 +6,7 @@
                 <h1>{{news.title}}</h1>
                 <span>{{news.body}}</span>
                 <div class="verMaisbutton">
-                    <default-button btnStyle="outline" text="Ver Mais" size="small"></default-button>
+                    <default-button (click)="navigateToNewsDetails(news.id)" btnStyle="outline" text="Ver Mais" size="small"></default-button>
                 </div>
             </div>
         }

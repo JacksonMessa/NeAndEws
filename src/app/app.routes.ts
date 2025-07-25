@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoggedAuthGuard } from './services/logged-auth-guard';
 import { MynewsComponent } from './pages/mynews/mynews.component';
 import { WriterAuthGuard } from './services/writer-auth-guard';
+import { NewsDetailsComponent } from './pages/news-details/news-details.component';
+import { NewsPublishComponent } from './pages/news-publish/news-publish.component';
 
 export const routes: Routes = [
     {
@@ -17,6 +19,22 @@ export const routes: Routes = [
         redirectTo:"home",
         pathMatch:"full"
     },
+    {
+        path:"news",
+        redirectTo:"home",
+        pathMatch:"full",
+    },{
+        path:"news",
+        children:[
+            {
+                path:":id",
+                component:NewsDetailsComponent,
+                canActivate:[LoggedAuthGuard]
+            }
+        ]
+        
+    },
+
     {
         path:"login",
         component:LoginComponent

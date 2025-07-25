@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { News } from '../../types/news.type';
 import { AsyncPipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent {
 
   constructor(private newsService:NewsService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ){}
 
   listNews$!:Observable<News[]>
@@ -33,5 +35,9 @@ export class HomeComponent {
         this.toastrService.error("Error retrieving news from API.")
       }
     })
+  }
+
+  navigateToNewsDetails(id:string){
+    this.router.navigate([`/news/${id}`])
   }
 }

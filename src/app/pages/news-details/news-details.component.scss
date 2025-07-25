@@ -1,0 +1,44 @@
+@use "../../styles/variables" as v;
+
+main{
+    padding: 10px;
+
+    h1 {
+        color: v.$primary-color;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .published-at{
+        font-size: 15px;
+        font-weight: bold;
+        color: v.$secondary-color;
+        margin-bottom: 10px;
+    }
+
+    .writer-container{
+
+
+        .written-by{
+            font-size: 20px;
+            font-weight: bold;
+            color: v.$secondary-color;
+        }
+        
+
+        a{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        @media(max-width:575.5px){
+            .writer-btn{
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    p{
+        text-align: justify;
+    }
+}
