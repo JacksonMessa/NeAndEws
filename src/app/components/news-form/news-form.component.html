@@ -1,0 +1,36 @@
+<div class="page-container">
+    <header>
+        <navbar/>
+    </header>
+    <div class="form-container">
+        <main>
+            <h1>{{title}}</h1>
+            <form [formGroup]="newsForm">
+                <label>Title</label>
+                <input 
+                    class="form-control"
+                    name="title"
+                    formControlName="title"
+                >
+                <label>Body</label>
+                <textarea 
+                    class="form-control"
+                    name="body"
+                    formControlName="body"
+                    rows="15"
+                    >
+                </textarea>
+            </form>
+            <div class="btn-container">
+                <default-button class="submit-btn" (click)="onSubmit()" text="Publish"></default-button>
+            </div>
+        </main>
+        <section class="news-elements">
+            <img ngSrc="assets/news-elements.png" height="592" width="147">
+        </section>
+    </div>
+</div>
+
+
+
+

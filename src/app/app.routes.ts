@@ -27,6 +27,11 @@ export const routes: Routes = [
         path:"news",
         children:[
             {
+                path:"publish",
+                component:NewsPublishComponent,
+                canActivate:[WriterAuthGuard]
+            },
+            {
                 path:":id",
                 component:NewsDetailsComponent,
                 canActivate:[LoggedAuthGuard]

@@ -1,0 +1,70 @@
+@use "../../styles/variables" as v;
+
+.page-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .form-container {
+        flex-grow: 1;
+        display: flex;
+        justify-content: c;
+        align-items: center;
+
+        main {
+            width: 80%;
+            padding: 0 15px;
+
+            h1 {
+                text-align: center;
+                font-weight: bold;
+                font-size: 45px;
+                color: v.$primary-color;
+            }
+
+            label {
+                font-size: 25px;
+                font-weight: 500;
+                text-align: start;
+                color: v.$primary-color;
+            }
+
+            textarea {
+                flex-grow: 1;
+                margin-bottom: 20px;
+                resize: none;
+            }
+
+            .btn-container{
+                float: right;
+                width: 20%;
+            }
+        }
+
+        .news-elements {
+            background-color: v.$secondary-color;
+            height: 100%;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        @media(max-width:800px){
+            main{
+                width: 100%;
+                .btn-container{
+                    float: right;
+                    width: 100%;
+                }
+            }
+
+            .news-elements{
+                width: 0;
+            }
+                
+        }
+
+    }
+}
