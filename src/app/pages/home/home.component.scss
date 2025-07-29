@@ -53,14 +53,14 @@ main {
                 box-orient: vertical;
             }
 
-            .verMaisbutton{
+            .seeMorebutton{
                 margin: 5px 0;
                 float: right;
                 width: 10%;
             }
 
             @media(max-width: 575px){
-                .verMaisbutton{
+                .seeMorebutton{
                     width: 100%;
                 }
             }
