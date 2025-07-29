@@ -16,6 +16,8 @@ export class UserFormsLayoutComponent {
   @Input() title:string = "";
   @Input() submitButtonText:string ="";
   @Input() navigateButtonText:string ="";
+  @Input() submitButtonIcon:string ="";
+  @Input() navigateButtonIcon:string ="";
   @Input() disableSubmitButton:boolean = false;
   @Output() submit = new EventEmitter();
   @Output() navigate = new EventEmitter();

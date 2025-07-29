@@ -7,19 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a [ngClass]="['nav-link' , path==='home' ? 'active' : '']" href="/home">Home</a>
+          <a [ngClass]="['nav-link' , path==='home' ? 'active bi bi-house-fill' : 'bi bi-house']" href="/home"> Home</a>
+          
         </li>
         @if(isWriter){
           <li class="nav-item">
-            <a [ngClass]="['nav-link' , path==='my-news' ? 'active' : '']" href="/my-news">My News</a>
+            <a [ngClass]="['nav-link' , path==='my-news' ? 'active bi-journal-bookmark-fill' : 'bi-journal-bookmark']" href="/my-news">My News</a>
           </li>
           <li class="nav-item">
-            <a [ngClass]="['nav-link' , path==='publish' ? 'active' : '']" href="/news/publish">Publish</a>
+            <a [ngClass]="['nav-link' , path==='publish' ? 'active bi-file-earmark-plus-fill' : 'bi-file-earmark-plus']" href="/news/publish">Publish</a>
           </li>
         }
       </ul>
       <div class="right-content">
-        <default-button text="Log Out" btnStyle="outline-white" (click)="logout()"/>
+        <default-button text="Log Out" btnStyle="outline-white" (click)="logout()" icon="box-arrow-left"/>
       </div>
     </div>
   </div>

@@ -2,7 +2,9 @@
 <user-forms-layout 
     [title]="'Log in to your account and relax with fresh news'"
     submitButtonText="Log in"
+    submitButtonIcon="box-arrow-in-right"
     navigateButtonText="Create Your Account"
+    navigateButtonIcon="person-add"
     [disableSubmitButton]="!loginForm.valid"
     (submit)="onSubmit()"
     (navigate)="onNavigate()"

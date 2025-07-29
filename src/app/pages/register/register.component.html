@@ -2,7 +2,9 @@
 <user-forms-layout 
     [title]="'Create your account and relax with fresh news'"
     submitButtonText="Register"
+    submitButtonIcon="person-add"
     navigateButtonText="Log in to your account"
+    navigateButtonIcon="box-arrow-in-right"
     [disableSubmitButton]="!registerForm.valid"
     (submit)="onSubmit()"
     (navigate)="onNavigate()"
