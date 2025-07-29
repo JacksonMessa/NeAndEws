@@ -7,6 +7,7 @@ import { MynewsComponent } from './pages/mynews/mynews.component';
 import { WriterAuthGuard } from './services/writer-auth-guard';
 import { NewsDetailsComponent } from './pages/news-details/news-details.component';
 import { NewsPublishComponent } from './pages/news-publish/news-publish.component';
+import { NewsUpdateComponent } from './pages/news-update/news-update.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,11 @@ export const routes: Routes = [
                 path:":id",
                 component:NewsDetailsComponent,
                 canActivate:[LoggedAuthGuard]
+            },
+            {
+                path:"update/:id",
+                component:NewsUpdateComponent,
+                canActivate:[WriterAuthGuard]
             }
         ]
         

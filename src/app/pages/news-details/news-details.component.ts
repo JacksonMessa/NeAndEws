@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { Observable, switchMap } from 'rxjs';
 import { News } from '../../types/news.type';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NewsService } from '../../services/news.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
@@ -28,7 +28,8 @@ export class NewsDetailsComponent {
 
   constructor(private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -47,6 +48,10 @@ export class NewsDetailsComponent {
         });
       }
     });
+  }
+
+  navigateToNewsUpdate(id: string){
+    this.router.navigate([`/news/update/${id}`]);
   }
 
 }

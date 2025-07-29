@@ -22,7 +22,7 @@
                 </textarea>
             </form>
             <div class="btn-container">
-                <default-button class="submit-btn" (click)="onSubmit()" text="Publish" [disabled]=!newsForm.valid></default-button>
+                <default-button class="submit-btn" (click)="onSubmit()" [text]="submitBtnText" [disabled]=!newsForm.valid></default-button>
             </div>
         </main>
         <section class="news-elements">

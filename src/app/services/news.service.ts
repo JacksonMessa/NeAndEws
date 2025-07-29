@@ -29,4 +29,8 @@ export class NewsService {
   create(data: NewsDefaultRequest): Observable<NewsDefaultResponse>{
     return this.httpCilent.post<NewsDefaultResponse>(this.apiURL,data);
   }
+
+  update(data: NewsDefaultRequest, id:string|null): Observable<NewsDefaultResponse>{
+    return this.httpCilent.put<NewsDefaultResponse>(`${this.apiURL}/${id}`,data);
+  }
 }
