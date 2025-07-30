@@ -1,0 +1,36 @@
+@use "../../styles/variables" as v;
+
+.modal-content{
+    background-color: v.$background-color;
+    padding: 5px;
+
+    h1{
+        color: v.$primary-color;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .divider{
+        background-color: lightgray;
+        height: 1px;
+        margin: 10px 0;
+    }
+
+    span{
+        font-size: 20px;
+    }
+
+    .btn-container{
+        display: flex;
+        justify-content: right;
+
+        gap: 5px;
+
+        .button{
+            width: 30%;
+        }
+    }
+
+    
+}

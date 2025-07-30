@@ -1,0 +1,14 @@
+<div class="modal fade" [id]="id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <h1>{{title}}</h1>
+            <div class="divider"></div>
+            <span>{{text}}</span>
+            <div class="divider"></div>
+            <div class="btn-container">
+                <default-button [text]="declineBtnText" class="button" size="small" btnStyle="outline" data-bs-dismiss="modal"/>
+                <default-button [text]="confirmBtnText" class="button" size="small" (click)="onConfirm()" data-bs-dismiss="modal"/>
+            </div>
+        </div>
+    </div>
+</div>
