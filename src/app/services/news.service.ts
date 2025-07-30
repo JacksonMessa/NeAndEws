@@ -33,4 +33,8 @@ export class NewsService {
   update(data: NewsDefaultRequest, id:string|null): Observable<NewsDefaultResponse>{
     return this.httpCilent.put<NewsDefaultResponse>(`${this.apiURL}/${id}`,data);
   }
+
+  delete(id:string){
+    return this.httpCilent.delete<NewsDefaultResponse>(`${this.apiURL}/${id}`);
+  }
 }

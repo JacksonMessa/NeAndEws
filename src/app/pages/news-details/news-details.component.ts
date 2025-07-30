@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NewsService } from '../../services/news.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { DefaultButton } from "../../components/default-button/default-button";
+import { ConfirmDialogComponent } from "../../components/confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'app-news-details',
@@ -15,12 +16,14 @@ import { DefaultButton } from "../../components/default-button/default-button";
     AsyncPipe,
     DatePipe,
     DefaultButton,
+    ConfirmDialogComponent
 ],
   templateUrl: './news-details.component.html',
   providers: [NewsService],
   styleUrl: './news-details.component.scss'
 })
 export class NewsDetailsComponent {
+
   id: string | null = null;
   news$!: Observable<News>;
   formatedBody!: string[];
@@ -52,6 +55,16 @@ export class NewsDetailsComponent {
 
   navigateToNewsUpdate(id: string){
     this.router.navigate([`/news/update/${id}`]);
+  }
+
+  deleteNews(id: string) {
+    this.newsService.delete(id).subscribe({
+      next: () => {
+        this.toastrService.success("News deleted successfully.");
+        this.router.navigate(["/home"])
+      },
+      error: () => this.toastrService.error("Error deleting news, try again later.")
+    })
   }
 
 }

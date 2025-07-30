@@ -17,8 +17,21 @@
                             icon="pencil"
                             (click)="navigateToNewsUpdate(news.id)"
                             />
-            <default-button class="col-lg-2 col-md-3 col-sm-6 writer-btn" size="small" text="Delete" btnStyle="outline" icon="trash"/>
+            <default-button class="col-lg-2 col-md-3 col-sm-6 writer-btn" 
+                            size="small" 
+                            text="Delete" 
+                            btnStyle="outline" 
+                            icon="trash"
+                            
+                            data-bs-toggle="modal" 
+                            data-bs-target="#confirmDialog"
+                            />
         }
+        <confirm-dialog 
+            text="If you delete this news, it will never be visible to you or any other user again. Are you sure you want to delete it?"
+            [title]="'Deleting News'"
+            (confirm)="deleteNews(news.id)"
+        />
         
     </div>
     
@@ -26,3 +39,8 @@
     <h1 class="text-center">News Not Found</h1>
 }
 </main>
+
+
+
+
+<!-- (click)="" -->
