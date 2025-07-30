@@ -1,5 +1,8 @@
+@use "../node_modules/bootstrap/scss/bootstrap" as b;
+@use "bootstrap-icons/font/bootstrap-icons" as bi;
 @import "ngx-toastr/toastr";
-@import "bootstrap-icons/font/bootstrap-icons";
+
+
 
 *{
     padding: 0;
