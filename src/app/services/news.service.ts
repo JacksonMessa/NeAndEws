@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { News } from '../types/news.type';
 import { Observable } from 'rxjs';
 import { NewsDefaultRequest } from '../types/news-default-request.type';
 import { NewsDefaultResponse } from '../types/new-default-response.type';
+import { NewsGetResponse } from '../types/news-get-response.type';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,11 @@ export class NewsService {
   constructor(private httpCilent: HttpClient,
   ) { }
 
-  getAll(): Observable<News[]> {
-    return this.httpCilent.get<News[]>(this.apiURL);
+  getAll(page:number, pageSize:number): Observable<NewsGetResponse> {
+    let getParams:HttpParams = new HttpParams()
+    .set("page", page)
+    .set("pageSize", pageSize);
+    return this.httpCilent.get<NewsGetResponse>(this.apiURL,{params: getParams});
   }
 
   get(id:string): Observable<News> {

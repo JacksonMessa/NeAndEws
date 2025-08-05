@@ -1,16 +1,34 @@
 <navbar/>
 <main>
     <section class="news-section">
-        @for(news of listNews$ | async; track news){
-            <div class="news">
-                <h1>{{news.title}}</h1>
-                <span>{{news.body}}</span>
-                <div class="seeMorebutton">
-                    <default-button (click)="navigateToNewsDetails(news.id)" btnStyle="outline" text="See More" size="small" icon="eye-fill"></default-button>
+        @if(news$ | async; as news){
+            <div class="news-found"><strong>{{news.newsFound}}</strong> news were found.</div>
+            @for(news of news.news ; track news){
+                <div class="news">
+                    <h1>{{news.title}}</h1>
+                    <span>{{news.body}}</span>
+                    <div class="seeMorebutton">
+                        <default-button (click)="navigateToNewsDetails(news.id)" btnStyle="outline" text="See More" size="small" icon="eye-fill"></default-button>
+                    </div>
                 </div>
+            }
+            @empty {
+                <h1 class="empty">No news was found</h1>
+            }
+            <div class="page-selector">
+                <default-button class="page-btn" size="small" text="<" [disabled]="pageSelected==1" (click)="pageNavigate((pageSelected-1).toString())"></default-button>
+                @if(!pageCounter.includes("1")){
+                    <span>...</span>
+                }
+                @for (page of pageCounter; track $index) {
+                    <default-button class="page-btn" size="small" [text]="page" (click)="pageNavigate(page)" [btnStyle]="pageSelected.toString()===page ? 'normal' : 'outline'"></default-button>
+                }
+                @if(morePagesAfter){
+                    <span>...</span>
+                }
+                <default-button class="page-btn" size="small" text=">" [disabled]="disableNextPageBtn" (click)="pageNavigate((+pageSelected+1).toString())"></default-button> 
             </div>
-        }
-        @empty {
+        }@else {
             <h1 class="empty">No news was found</h1>
         }
     </section>
