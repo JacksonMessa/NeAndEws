@@ -1,104 +1,128 @@
 @use "../../styles/variables" as v;
 
+.filter-menu {
+    background-color: v.$secondary-color;
+    color: white;
+    padding: 5px;
 
-main {
-    
-    .news-section {
 
+    .filter-container {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        gap: 10px;
 
-        padding: 5px 20px;
+        padding: 0 10px;
 
-        .empty{
+        font-size: 18px;
+        strong {
             color: v.$primary-color;
-            text-align: center;
-            font-size: 50px;
-            font-weight: 300px;
-        }
-
-        .news-found{
-            font-size: 15px;
-            text-align: right;
-
-            strong{
-                color: v.$secondary-color;
-            }
-        }
-
-        
-        .news {
-            display: table;
-            clear: both;
-            
-            width: 100%;
-            
-
-            border-bottom: 5px solid v.$secondary-color;
-
-            h1 {
-                color: v.$primary-color;
-                font-size: 30px;
-                font-weight: bold;
-
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-
-                /* for compatibility */
-                line-clamp: 2;
-                box-orient: vertical;
-            }
-
-
-            span {
-
-                
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-
-                /* for compatibility */
-                line-clamp: 3;
-                box-orient: vertical;
-            }
-
-            .seeMorebutton{
-                margin: 5px 0;
-                float: right;
-                width: 10%;
-            }
-
-            @media(max-width: 575px){
-                .seeMorebutton{
-                    width: 100%;
-                }
-            }
-
-        }
-
-        .page-selector{
-            margin-top: 10px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            gap: 2px;
-
-            .page-btn{
-                width: 30px;
-            }
-
-            span{
-                margin-bottom: 15px;
-                color: v.$primary-color;
-                font-size: 30px;
-                cursor: default;
-            }
-            
         }
     }
 
+    .btn-container{
+        display: flex;
+        flex-direction: column;
+
+        gap: 5px;
+
+        @media(max-width:767.5px) {
+            margin-top: 5px;
+        }
+
+        .btn-filter{
+            width: 100%;
+        }
+    }
 
 }
+
+.empty {
+    color: v.$primary-color;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300px;
+}
+
+
+.news-section {
+
+    padding: 5px 20px;
+
+
+
+    .news {
+        display: table;
+        clear: both;
+
+        width: 100%;
+
+
+        border-bottom: 5px solid v.$secondary-color;
+
+        h1 {
+            color: v.$primary-color;
+            font-size: 30px;
+            font-weight: bold;
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+            /* for compatibility */
+            line-clamp: 2;
+            box-orient: vertical;
+        }
+
+
+        span {
+
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+
+            /* for compatibility */
+            line-clamp: 3;
+            box-orient: vertical;
+        }
+
+        .seeMorebutton {
+            margin: 5px 0;
+            float: right;
+            width: 10%;
+        }
+
+        @media(max-width: 575px) {
+            .seeMorebutton {
+                width: 100%;
+            }
+        }
+
+    }
+}
+
+.page-selector {
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2px;
+
+    .page-btn {
+        width: 30px;
+    }
+
+    span {
+        margin-bottom: 15px;
+        color: v.$primary-color;
+        font-size: 30px;
+        cursor: default;
+    }
+
+}
+

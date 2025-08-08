@@ -1,35 +1,81 @@
-<navbar/>
-<main>
-    <section class="news-section">
-        @if(news$ | async; as news){
-            <div class="news-found"><strong>{{news.newsFound}}</strong> news were found.</div>
-            @for(news of news.news ; track news){
-                <div class="news">
-                    <h1>{{news.title}}</h1>
-                    <span>{{news.body}}</span>
-                    <div class="seeMorebutton">
-                        <default-button (click)="navigateToNewsDetails(news.id)" btnStyle="outline" text="See More" size="small" icon="eye-fill"></default-button>
-                    </div>
-                </div>
-            }
-            @empty {
-                <h1 class="empty">No news was found</h1>
-            }
-            <div class="page-selector">
-                <default-button class="page-btn" size="small" text="<" [disabled]="pageSelected==1" (click)="pageNavigate((pageSelected-1).toString())"></default-button>
-                @if(!pageCounter.includes("1")){
-                    <span>...</span>
-                }
-                @for (page of pageCounter; track $index) {
-                    <default-button class="page-btn" size="small" [text]="page" (click)="pageNavigate(page)" [btnStyle]="pageSelected.toString()===page ? 'normal' : 'outline'"></default-button>
-                }
-                @if(morePagesAfter){
-                    <span>...</span>
-                }
-                <default-button class="page-btn" size="small" text=">" [disabled]="disableNextPageBtn" (click)="pageNavigate((+pageSelected+1).toString())"></default-button> 
+<header>
+    <navbar/>
+    <div class="filter-menu">
+        <div class="filter-container">
+            <span><strong>{{newsFound}}</strong> news were found</span>
+            <div>
+                <button class="navbar-toggler bi bi-funnel a"  data-bs-toggle="collapse" data-bs-target="#filterInputs"></button>
             </div>
-        }@else {
+            
+        </div>
+        <div class="collapse" id="filterInputs">
+            <form class="row" method="dialog" [formGroup]="filterForm">
+                <div class="col-md-4">
+                    <label for="title">Title</label>
+                    <input 
+                        class="form-control"
+                        type="text"
+                        name="title"
+                        formControlName="title"
+                    >
+                </div>
+                <div class="col-md-3">
+                    <label>Writer</label>
+                    <input 
+                        class="form-control"
+                        type="text"
+                        name="writer"
+                        formControlName="writer"
+                    >
+                </div>
+                <div class="col-md-3 mb-2-sm">
+                    <label>Publication Date</label>
+                    <input 
+                        class="form-control" 
+                        type="date"
+                        name="publicationDate"
+                        formControlName="publicationDate"
+                    >
+                </div>
+                <div class="col-md-2 btn-container">
+                    <default-button class="btn-filter" text="Clean" icon="x-lg" size="small" btnStyle="outline-white" (click)="cleanFilters()" [disabled]="disableCleanBtn"/>
+                    <default-button class="btn-filter" text="Apply" icon="funnel-fill" size="small" (click)="applyFilters()"/>
+                    
+                </div>
+            </form>
+        </div>  
+    </div>
+</header>
+    
+@if(news$ | async; as news){
+    
+    <main class="news-section">
+        @for(news of news.news ; track news){
+            <div class="news">
+                <h1>{{news.title}}</h1>
+                <span>{{news.body}}</span>
+                <div class="seeMorebutton">
+                    <default-button (click)="navigateToNewsDetails(news.id)" btnStyle="outline" text="See More" size="small" icon="eye-fill"></default-button>
+                </div>
+            </div>
+        }
+        @empty {
             <h1 class="empty">No news was found</h1>
         }
-    </section>
-</main>
+    </main>
+    <footer class="page-selector">
+        <default-button class="page-btn" size="small" text="<" [disabled]="pageSelected==1" (click)="pageNavigate((pageSelected-1).toString())"></default-button>
+        @if(!pageCounter.includes("1")){
+            <span>...</span>
+        }
+        @for (page of pageCounter; track $index) {
+            <default-button class="page-btn" size="small" [text]="page" (click)="pageNavigate(page)" [btnStyle]="pageSelected.toString()===page ? 'normal' : 'outline'"></default-button>
+        }
+        @if(morePagesAfter){
+            <span>...</span>
+        }
+        <default-button class="page-btn" size="small" text=">" [disabled]="disableNextPageBtn" (click)="pageNavigate((+pageSelected+1).toString())"></default-button> 
+    </footer>
+}@else {
+    <h1 class="empty">No news was found</h1>
+}

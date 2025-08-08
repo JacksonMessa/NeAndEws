@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { NewsDefaultRequest } from '../types/news-default-request.type';
 import { NewsDefaultResponse } from '../types/new-default-response.type';
 import { NewsGetResponse } from '../types/news-get-response.type';
+import { GetRequestFilter } from '../types/get-request-filter.type';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,19 @@ export class NewsService {
   constructor(private httpCilent: HttpClient,
   ) { }
 
-  getAll(page:number, pageSize:number): Observable<NewsGetResponse> {
+  getAll(page:number, pageSize:number, filterData:GetRequestFilter): Observable<NewsGetResponse> {
     let getParams:HttpParams = new HttpParams()
     .set("page", page)
-    .set("pageSize", pageSize);
+    .set("pageSize", pageSize)
+
+    if (filterData.title!=null) getParams = getParams.set("title",filterData.title);
+    if (filterData.writer!=null) getParams = getParams.set("writer",filterData.writer);
+    if (filterData.publicationDate!=null){
+      const dateArray:string[] = filterData.publicationDate.toString().split("-");
+      const formattedDate: string = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`
+      getParams = getParams.set("publicationDate",formattedDate);
+    } 
+    
     return this.httpCilent.get<NewsGetResponse>(this.apiURL,{params: getParams});
   }
 
