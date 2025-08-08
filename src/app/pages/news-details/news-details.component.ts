@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
-import { Observable, switchMap } from 'rxjs';
+import { Observable} from 'rxjs';
 import { News } from '../../types/news.type';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -65,6 +65,10 @@ export class NewsDetailsComponent {
       },
       error: () => this.toastrService.error("Error deleting news, try again later.")
     })
+  }
+
+  navigateWriterNews(writer: string){
+    this.router.navigate(["/home"], {queryParams: {writer:writer}})
   }
 
 }

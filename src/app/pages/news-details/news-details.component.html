@@ -8,7 +8,7 @@
         <p>{{paragrafh}}</p>
     }
     <div class="row writer-container">
-        <span class="col-lg-8 col-md-6 col-sm-12 written-by">Written by: <a>{{news.writer}}</a></span>
+        <span class="col-lg-8 col-md-6 col-sm-12 written-by">Written by: <a (click)="navigateWriterNews(news.writer)">{{news.writer}}</a></span>
         @if(isWriterOfThisNews){
             <default-button class="col-lg-2 col-md-3 col-sm-6 writer-btn" 
                             size="small" 
@@ -39,8 +39,3 @@
     <h1 class="text-center">News Not Found</h1>
 }
 </main>
-
-
-
-
-<!-- (click)="" -->
