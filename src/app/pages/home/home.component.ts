@@ -71,7 +71,7 @@ export class HomeComponent {
         publicationDate: params['publicationDate']
       })
 
-      this.news$ = this.newsService.getAll(this.pageSelected - 1, this.pageSize,this.filterData);
+      this.news$ = this.newsService.getAllPaged(this.pageSelected - 1, this.pageSize,this.filterData);
       this.news$.subscribe({
         next: (value) => {
 

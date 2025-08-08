@@ -20,7 +20,22 @@ export class NewsService {
   constructor(private httpCilent: HttpClient,
   ) { }
 
-  getAll(page:number, pageSize:number, filterData:GetRequestFilter): Observable<NewsGetResponse> {
+  getAll(filterData:GetRequestFilter): Observable<NewsGetResponse> {
+    let getParams:HttpParams = new HttpParams();
+
+    if (filterData.title!=null) getParams = getParams.set("title",filterData.title);
+    if (filterData.writer!=null) getParams = getParams.set("writer",filterData.writer);
+    if (filterData.publicationDate!=null){
+      const dateArray:string[] = filterData.publicationDate.toString().split("-");
+      const formattedDate: string = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`
+      getParams = getParams.set("publicationDate",formattedDate);
+    } 
+    
+    return this.httpCilent.get<NewsGetResponse>(this.apiURL,{params: getParams});
+  }
+
+
+  getAllPaged(page:number, pageSize:number, filterData:GetRequestFilter): Observable<NewsGetResponse> {
     let getParams:HttpParams = new HttpParams()
     .set("page", page)
     .set("pageSize", pageSize)

@@ -1,0 +1,55 @@
+@use "../../styles/variables" as v;
+
+main {
+    .news {
+        margin-top: 10px;
+        padding: 0 5px;
+        font-size: 25px;
+        display: flex;
+        gap: 10px;
+
+        span {
+            color: v.$primary-color;
+            flex-grow: 1;
+            font-weight: 500;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        button {
+
+            &.edit{
+                color: v.$edit-yelow;
+            }
+
+            &.delete{
+                color: v.$delete-red;
+            }
+
+            &.see-more{
+                color: v.$see-more-blue;
+            }
+            
+            border: none;
+            background: transparent;
+        }
+    }
+
+    .divider {
+        background-color: v.$secondary-color;
+        height: 3px;
+        width: 100%;
+    }
+
+    .empty {
+        color: v.$primary-color;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 300px;
+
+        a {
+            color: v.$primary-color;
+        }
+    }
+}
