@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NewsDefaultRequest } from '../../types/news-default-request.type';
 import { ToastrService } from 'ngx-toastr';
-import { NewsDefaultResponse } from '../../types/new-default-response.type';
+import { NewsDefaultResponse } from '../../types/news-default-response.type';
 import { Router } from '@angular/router';
 import { NewsService } from '../../services/news.service';
 import { NewsFormComponent } from "../../components/news-form/news-form.component";

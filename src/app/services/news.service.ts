@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { News } from '../types/news.type';
 import { Observable } from 'rxjs';
 import { NewsDefaultRequest } from '../types/news-default-request.type';
-import { NewsDefaultResponse } from '../types/new-default-response.type';
+import { NewsDefaultResponse } from '../types/news-default-response.type';
 import { NewsGetResponse } from '../types/news-get-response.type';
 import { GetRequestFilter } from '../types/get-request-filter.type';
 

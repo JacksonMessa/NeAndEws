@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { NewsService } from '../../services/news.service';
 import { ToastrService } from 'ngx-toastr';
 import { NewsDefaultRequest } from '../../types/news-default-request.type';
-import { NewsDefaultResponse } from '../../types/new-default-response.type';
+import { NewsDefaultResponse } from '../../types/news-default-response.type';
 
 @Component({
   selector: 'app-news-update',
