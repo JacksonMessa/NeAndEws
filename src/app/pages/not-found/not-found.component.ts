@@ -8,5 +8,5 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent {
-
+  isAuthenticated:boolean = localStorage.getItem("auth-token") !== null;
 }

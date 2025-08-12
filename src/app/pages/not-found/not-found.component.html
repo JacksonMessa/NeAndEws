@@ -1,2 +1,6 @@
-<navbar/>
-<h1 class="alert-text">Page not found, use the navbar to navigate for a valid page.</h1>
+@if(isAuthenticated){
+    <navbar/>
+    <h1 class="alert-text">Page not found, use the navbar to navigate for a valid page.</h1>
+}@else {
+    <h1 class="alert-text">Page not found, access the <a href="/login">Login</a> or <a href="/register">Register</a> page to start using Ne&Ews.</h1>
+}
