@@ -46,7 +46,7 @@ export class NewsFormComponent{
       this.news$ = this.newsService.get(this.newsId);
         this.news$.subscribe({
           next: (value) => {
-            if(!(value.writer === sessionStorage.getItem("username"))){
+            if(!(value.writer === localStorage.getItem("username"))){
               this.toastrService.error("You don't have permission to edit this news.")
               this.router.navigate(['/home'])
             }else{

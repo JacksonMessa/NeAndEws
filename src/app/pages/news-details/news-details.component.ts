@@ -43,7 +43,7 @@ export class NewsDetailsComponent {
         this.news$.subscribe({
           next: (value) => {
             this.formatedBody = value.body.split("\n");
-            this.isWriterOfThisNews = value.writer === sessionStorage.getItem("username")
+            this.isWriterOfThisNews = value.writer === localStorage.getItem("username")
           },
           error: () => {
             this.toastrService.error("Error retrieving news from API.")

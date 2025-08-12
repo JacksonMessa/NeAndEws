@@ -9,7 +9,7 @@ export class WriterAuthGuard implements CanActivate{
 
   constructor(private router: Router) {  }
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
-    const userRole = sessionStorage.getItem('user-role');
+    const userRole = localStorage.getItem('user-role');
 
     if(userRole == "WRITER"){
       return true;

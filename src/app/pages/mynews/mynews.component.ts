@@ -36,7 +36,7 @@ export class MynewsComponent {
   getNews(){
     const filterData:GetRequestFilter = {
       title:null,
-      writer:sessionStorage.getItem("username"),
+      writer:localStorage.getItem("username"),
       publicationDate: null
     }
 

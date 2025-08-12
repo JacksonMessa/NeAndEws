@@ -8,7 +8,7 @@ export class LoggedAuthGuard implements CanActivate{
 
   constructor(private router: Router) {  }
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
-    const authToken = sessionStorage.getItem('auth-token');
+    const authToken = localStorage.getItem('auth-token');
 
     if(authToken){
       return true;

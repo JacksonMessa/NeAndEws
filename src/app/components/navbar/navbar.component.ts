@@ -22,7 +22,7 @@ export class NavbarComponent {
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute
   ){
-    if(sessionStorage.getItem("user-role")=="WRITER"){
+    if(localStorage.getItem("user-role")=="WRITER"){
       this.isWriter=true;
     }
     this.path = this.activatedRoute.snapshot.url[0].path;

@@ -23,9 +23,9 @@ export class UserService {
   ) {
     return this.httpClient.post<LoginResponse>(this.apiURL + "/login", data).pipe(
       tap((value) => {
-        sessionStorage.setItem("auth-token", value.token);
-        sessionStorage.setItem("username", value.user.username);
-        sessionStorage.setItem("user-role", value.user.role);
+        localStorage.setItem("auth-token", value.token);
+        localStorage.setItem("username", value.user.username);
+        localStorage.setItem("user-role", value.user.role);
         this.router.navigate(["/home"]);
       })
     )
@@ -44,9 +44,9 @@ export class UserService {
   }
 
   logout() {
-    sessionStorage.removeItem("auth-token");
-    sessionStorage.removeItem("username");
-    sessionStorage.removeItem("user-role");
+    localStorage.removeItem("auth-token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("user-role");
     this.router.navigate(["/login"]);
   }
 
