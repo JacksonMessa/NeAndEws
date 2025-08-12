@@ -8,6 +8,7 @@ import { WriterAuthGuard } from './services/writer-auth-guard';
 import { NewsDetailsComponent } from './pages/news-details/news-details.component';
 import { NewsPublishComponent } from './pages/news-publish/news-publish.component';
 import { NewsUpdateComponent } from './pages/news-update/news-update.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
     {
@@ -58,5 +59,13 @@ export const routes: Routes = [
         path:"my-news",
         component:MynewsComponent,
         canActivate:[WriterAuthGuard]
+    },
+    {
+        path:"not-found",
+        component: NotFoundComponent
+    },
+    {
+        path:"**",
+        redirectTo:"not-found"
     }
 ];

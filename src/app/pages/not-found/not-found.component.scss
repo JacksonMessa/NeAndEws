@@ -1,0 +1,8 @@
+@use "../../styles/variables" as v;
+
+.alert-text {
+    color: v.$primary-color;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300px;
+}
