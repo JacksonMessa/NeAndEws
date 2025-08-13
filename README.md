@@ -51,7 +51,7 @@ As interfaces para publicar e editar notícias são semelhantes as principais di
  
       git clone https://github.com/JacksonMessa/NeAndEws.git
 
-  <li>Executar o projeto</li>
+  <li>Executar o projeto</li><br>
 
     cd NeAndEws
     npm install
