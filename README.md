@@ -15,7 +15,7 @@ Presente em todas as telas após realizar o login pelo menu é possível navegar
 <img width="1919" height="75" alt="image" src="https://github.com/user-attachments/assets/2f5b2beb-b14d-4989-a2f1-0b83140d1aa0" />
 
 <h2>Home</h2>
-Essa é a página principal em que o usuário pode ver uma prévia das notícias e escolher qual ele deseja ler, nela também é possível filtrar por escritor, título e data de publicação para facilitar encontrar a notícia e as notícias são divididas por páginas para melhorar a orginazação e evitar o carregamento de notícias desnecessárias.
+Essa é a página principal em que o usuário pode ver uma prévia das notícias e escolher qual ele deseja ler, nela também é possível filtrar por escritor, título e data de publicação para facilitar encontrar a notícia e as notícias são divididas por páginas para melhorar a organização e evitar o carregamento de notícias desnecessárias.
 <img width="1755" height="1271" alt="image" src="https://github.com/user-attachments/assets/1773bed4-508f-497b-ada4-0b77e6b14a00" />
 
 <h2>Notícias em Detalhes</h2>
