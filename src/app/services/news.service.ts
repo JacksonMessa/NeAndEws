@@ -6,6 +6,7 @@ import { NewsDefaultRequest } from '../types/news-default-request.type';
 import { NewsDefaultResponse } from '../types/news-default-response.type';
 import { NewsGetResponse } from '../types/news-get-response.type';
 import { GetRequestFilter } from '../types/get-request-filter.type';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ import { GetRequestFilter } from '../types/get-request-filter.type';
 
 export class NewsService {
 
-  private readonly apiURL: string = "http://localhost:8080/news-api/news"
+  private readonly apiURL: string = environment.apiBaseUrl + "/news"
 
   constructor(private httpCilent: HttpClient,
   ) { }

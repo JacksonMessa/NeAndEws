@@ -6,6 +6,7 @@ import { RegisterFormData } from '../types/register-form-data.type';
 import { LoginFormData } from '../types/login-form-data.type';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  readonly apiURL: string = "http://localhost:8080/news-api/user"
+  readonly apiURL: string = environment.apiBaseUrl + "/user"
 
   constructor(private httpClient: HttpClient,
     private router: Router
