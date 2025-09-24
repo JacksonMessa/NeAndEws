@@ -63,19 +63,22 @@
             <h1 class="empty">No news was found</h1>
         }
     </main>
-    <footer class="page-selector">
-        <default-button class="page-btn" size="small" text="<" [disabled]="pageSelected==1" (click)="pageNavigate((pageSelected-1).toString())"></default-button>
-        @if(!pageCounter.includes("1")){
-            <span>...</span>
-        }
-        @for (page of pageCounter; track $index) {
-            <default-button class="page-btn" size="small" [text]="page" (click)="pageNavigate(page)" [btnStyle]="pageSelected.toString()===page ? 'normal' : 'outline'"></default-button>
-        }
-        @if(morePagesAfter){
-            <span>...</span>
-        }
-        <default-button class="page-btn" size="small" text=">" [disabled]="disableNextPageBtn" (click)="pageNavigate((+pageSelected+1).toString())"></default-button> 
-    </footer>
+    @if (pageCounter.length>0) {
+        <footer class="page-selector">
+            <default-button class="page-btn" size="small" text="<" [disabled]="pageSelected==1" (click)="pageNavigate((pageSelected-1).toString())"></default-button>
+            @if(!pageCounter.includes("1")){
+                <span>...</span>
+            }
+            @for (page of pageCounter; track $index) {
+                <default-button class="page-btn" size="small" [text]="page" (click)="pageNavigate(page)" [btnStyle]="pageSelected.toString()===page ? 'normal' : 'outline'"></default-button>
+            }
+            @if(morePagesAfter){
+                <span>...</span>
+            }
+            <default-button class="page-btn" size="small" text=">" [disabled]="disableNextPageBtn" (click)="pageNavigate((+pageSelected+1).toString())"></default-button> 
+        </footer>
+    }
+    
 }@else {
     <h1 class="empty">No news was found</h1>
 }
