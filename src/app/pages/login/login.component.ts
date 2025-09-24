@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserFormsLayoutComponent } from "../../components/user-forms-layout/user-forms-layout.component";
 import { Router } from '@angular/router';
 import { LoginFormData } from '../../types/login-form-data.type';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +42,14 @@ export class LoginComponent {
       let data: LoginFormData = this.loginForm.value;
       this.userService.login(data).subscribe({
         next: () => this.toastrService.success("Login Sucefully"),
-        error: () => this.toastrService.error("Login Failed. Please check that you have entered your username and password correctly.")
+        error: (value:HttpErrorResponse) => {
+          console.log(value.status);
+          if(value.status == 401){
+            this.toastrService.error("Login failed. The username or password entered is incorrect.")
+          }else{
+            this.toastrService.error("Login failed due to an internal error try again later.")
+          }
+        } 
       });
     }
   }
