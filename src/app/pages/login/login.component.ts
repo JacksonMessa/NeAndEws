@@ -27,6 +27,9 @@ export class LoginComponent {
     private toastrService: ToastrService,
     private router: Router
   ) {
+    localStorage.removeItem("auth-token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("user-role");
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)

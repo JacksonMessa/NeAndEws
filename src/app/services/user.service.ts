@@ -35,7 +35,6 @@ export class UserService {
   register(data: RegisterFormData) {
     return this.httpClient.post<string>(this.apiURL + "/register", data).pipe(
       catchError((value) => {
-        console.log(value.error);
         return throwError(() => new Error(value.error.message));
       }),
       switchMap(() => {
@@ -45,9 +44,6 @@ export class UserService {
   }
 
   logout() {
-    localStorage.removeItem("auth-token");
-    localStorage.removeItem("username");
-    localStorage.removeItem("user-role");
     this.router.navigate(["/login"]);
   }
 
