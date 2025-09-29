@@ -1,5 +1,5 @@
 <h1>Visão Geral</h1>
-O Ne&ews é um projeto front-end realizado com o intuito de aprimorar meus conhecimentos em Angular, TypeScript e SCSS. Trata-se de um site que consome a <a href="https://github.com/JacksonMessa/NewsAPI">NewsAPI</a> uma API que de notícias que eu desenvolvi utilizando tecnologias como Java, Spring, Spring Boot e PostgreSQL.
+O Ne&ews é um projeto front-end realizado com o intuito de aprimorar meus conhecimentos em Angular, TypeScript e SCSS. Trata-se de um site que consome a <a href="https://github.com/JacksonMessa/NewsAPI">NewsAPI</a> uma API que de notícias que eu desenvolvi utilizando tecnologias como Java, Spring, Spring Boot e PostgreSQL. Este projeto está disponível para teste em https://neandews.onrender.com.
 
 <h2>Login</h2>
 A tela de Login contém campos de username e senha que devem ser preenchidos para que o usuário possa entrar na sua conta e utilizar o site.
