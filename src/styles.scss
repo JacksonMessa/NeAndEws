@@ -2,18 +2,34 @@
 @use "bootstrap-icons/font/bootstrap-icons" as bi;
 @import "ngx-toastr/toastr";
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 
 *{
-    padding: 0;
-    margin: 0;
-    box-sizing:border-box;
-    font-family: "Poppins", sans-serif;  
+  padding: 0;
+  margin: 0;
+  box-sizing:border-box;
+  font-family: "Poppins", sans-serif;  
 }
 
 html, body{
-    height: 100%;
-    width: 100%;
-    box-sizing:border-box;
-    background-color: #efe9ce;
+  height: 100%;
+  width: 100%;
+  box-sizing:border-box;
+  background-color: #efe9ce;
+}
+
+.rotate-element{
+  animation: rotate 1.5s linear infinite;
+  font-weight: 450;
+  display: inline-block; 
+  margin-left: 5px;
+  user-select: none; 
 }

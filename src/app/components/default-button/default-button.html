@@ -1,5 +1,10 @@
 <button class="{{btnClass}}" [disabled]="disabled" click="onClick()">
-    {{text}}
+    @if(!loading){
+        {{text}}
+    }
+    @else {
+        Loading<span class="rotate-element">C</span>
+    }
     @if(icon){
         <span [ngClass]="['bi','bi-'+icon]" ></span>
     }

@@ -2,27 +2,41 @@
     <navbar/>
 </header>
 <main>
-    @if(news$ | async; as news){
-        @for(news of news.news; track $index){
-            <div class="news">
-                <span>{{news.title}}</span>
-                <button class="bi bi-pencil edit" (click)="navigateUpdate(news.id)"></button>
-                <button class="bi bi-trash delete" data-bs-toggle="modal"  [attr.data-bs-target]="'#dialog' + news.id"></button>
-                <button class="bi bi-eye-fill see-more" (click)="navigateDetails(news.id)"></button>
-            </div>
-            <div class="divider"></div>
-            <confirm-dialog 
-                text="If you delete this news, it will never be visible to you or any other user again. Are you sure you want to delete it?"
-                [title]="'Deleting News'"
-                (confirm)="deleteNews(news.id)"
-                [id]="'dialog'+news.id"
-            />
+    
+        @if(news$ | async; as news){
+            
+                @for(news of news.news; track $index){
+                    <div class="news">
+                        @if(newsExcluding != news.id){
+                            <span>{{news.title}}</span>
+                            <button class="bi bi-pencil edit" (click)="navigateUpdate(news.id)"></button>
+                            <button class="bi bi-trash delete" data-bs-toggle="modal"  [attr.data-bs-target]="'#dialog' + news.id"></button>
+                            <button class="bi bi-eye-fill see-more" (click)="navigateDetails(news.id)"></button>
+                        }@else {
+                            <span>This news is being deleted <div class="rotate-element">C</div></span>
+                        }
+                    </div>
+                    <div class="divider"></div>
+                    <confirm-dialog 
+                        text="If you delete this news, it will never be visible to you or any other user again. Are you sure you want to delete it?"
+                        [title]="'Deleting News'"
+                        (confirm)="deleteNews(news.id)"
+                        [id]="'dialog'+news.id"
+                    />
+                }
+                @empty {
+                    <h1 class="empty">You haven't written any news yet. Try it on the <a href="/news/publish">Publish</a> page.</h1>
+                }
+            
+            
+            
+            
+        }@else {
+            @if (loading) {
+                <h1 class="empty">Loading<span class="rotate-element">C</span></h1>
+            }@else {
+                <h1 class="empty">No news was found.</h1>
+            }
         }
-        
-        @empty {
-            <h1 class="empty">You haven't written any news yet. Try it on the <a href="/news/publish">Publish</a> page.</h1>
-        }
-    }@else {
-        <h1 class="empty">No news was found.</h1>
-    }
+    
 </main>

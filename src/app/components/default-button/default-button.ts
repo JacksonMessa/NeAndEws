@@ -19,6 +19,7 @@ export class DefaultButton {
   @Input() btnStyle:BtnStyle = "normal";
   @Input() size:Size = "medium";
   @Input() disabled:boolean = false;
+  @Input() loading:boolean = false;
   @Output() click = new EventEmitter();
   
 

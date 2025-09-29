@@ -6,11 +6,15 @@
         <main>
             <h1>{{title}}</h1>
             <form [formGroup]="newsForm">
+                @if(loadingNews){
+                    <h2>Loading News<span class="rotate-element">C</span></h2>
+                }
                 <label>Title</label>
                 <input 
                     class="form-control"
                     name="title"
                     formControlName="title"
+                    [readonly] = "loadingNews"
                 >
                 <label>Body</label>
                 <textarea 
@@ -18,11 +22,13 @@
                     name="body"
                     formControlName="body"
                     rows="15"
+                    [readonly] = "loadingNews"
                     >
                 </textarea>
+                
             </form>
             <div class="btn-container">
-                <default-button class="submit-btn" (click)="onSubmit()" [text]="submitBtnText" [disabled]=!newsForm.valid></default-button>
+                <default-button class="submit-btn" (click)="onSubmit()" [text]="submitBtnText" [disabled]="!newsForm.valid" [loading]="loadingSubmit"></default-button>
             </div>
         </main>
         <section class="news-elements">

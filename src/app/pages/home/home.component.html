@@ -80,5 +80,9 @@
     }
     
 }@else {
-    <h1 class="empty">No news was found</h1>
+    @if (loading) {
+        <h1 class="empty">Loading<span class="rotate-element">C</span></h1>
+    }@else {
+        <h1 class="empty">No news was found.</h1>
+    }
 }

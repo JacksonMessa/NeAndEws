@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
-import { Observable} from 'rxjs';
+import { finalize, Observable} from 'rxjs';
 import { News } from '../../types/news.type';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -28,6 +28,8 @@ export class NewsDetailsComponent {
   news$!: Observable<News>;
   formatedBody!: string[];
   isWriterOfThisNews: boolean = false;
+  loadingNews:boolean = true;
+  loadingDelete:boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
@@ -43,14 +45,20 @@ export class NewsDetailsComponent {
         this.news$.subscribe({
           next: (value) => {
             this.formatedBody = value.body.split("\n");
-            this.isWriterOfThisNews = value.writer === localStorage.getItem("username")
+            this.isWriterOfThisNews = value.writer === localStorage.getItem("username");
           },
           error: () => {
-            this.toastrService.error("Error retrieving news from API.")
+            this.toastrService.error("Error retrieving news from API.");
+            this.loadingNews=false;
           }
         });
       }
     });
+    this.news$.pipe(
+      finalize(() => {
+        this.loadingNews=false;
+      })
+    )
   }
 
   navigateToNewsUpdate(id: string){
@@ -58,12 +66,17 @@ export class NewsDetailsComponent {
   }
 
   deleteNews(id: string) {
+    this.loadingDelete = true;
     this.newsService.delete(id).subscribe({
       next: () => {
         this.toastrService.success("News deleted successfully.");
         this.router.navigate(["/home"])
+        this.loadingDelete = false;
       },
-      error: () => this.toastrService.error("Error deleting news, try again later.")
+      error: () => {
+        this.toastrService.error("Error deleting news, try again later.");
+        this.loadingDelete = false;
+      }
     })
   }
 

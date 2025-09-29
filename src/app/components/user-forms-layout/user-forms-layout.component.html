@@ -11,7 +11,7 @@
             <div class="form-container">
                 <ng-content/>
                 <div class="btn-container">
-                    <default-button [text]="submitButtonText" [disabled] = "disableSubmitButton" (click)="onSubmit()" [icon]="submitButtonIcon"/>
+                    <default-button [text]="submitButtonText" [disabled] = "disableSubmitButton || loading" (click)="onSubmit()" [icon]="submitButtonIcon" [loading]="loading"/>
                     <default-button [text]="navigateButtonText" btnStyle="outline" (click)="onNavigate()" [icon]="navigateButtonIcon"/>
                 </div>
             </div>

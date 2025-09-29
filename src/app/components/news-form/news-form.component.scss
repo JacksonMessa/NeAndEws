@@ -22,6 +22,13 @@
                 color: v.$primary-color;
             }
 
+            h2 {
+                font-size: 30px;
+                font-weight: bold;
+                text-align: start;
+                color: v.$primary-color;
+            }
+
             label {
                 font-size: 25px;
                 font-weight: 500;
@@ -33,6 +40,10 @@
                 flex-grow: 1;
                 margin-bottom: 20px;
                 resize: none;
+            }
+
+            input:read-only,textarea:read-only{
+                cursor:wait;
             }
 
             .btn-container{

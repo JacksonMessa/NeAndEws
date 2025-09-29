@@ -6,6 +6,7 @@ import { UserFormsLayoutComponent } from "../../components/user-forms-layout/use
 import { Router } from '@angular/router';
 import { LoginFormData } from '../../types/login-form-data.type';
 import { HttpErrorResponse } from '@angular/common/http';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent {
 
   loginForm!: FormGroup
-
+  loading:boolean = false;
 
 
   constructor(private userService: UserService,
@@ -39,18 +40,24 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.loading = true;
       let data: LoginFormData = this.loginForm.value;
-      this.userService.login(data).subscribe({
-        next: () => this.toastrService.success("Login Sucefully"),
+      this.userService.login(data)
+      .subscribe({
+        next: () => {
+          this.toastrService.success("Login Sucefully")
+        },
         error: (value:HttpErrorResponse) => {
-          console.log(value.status);
           if(value.status == 401){
             this.toastrService.error("Login failed. The username or password entered is incorrect.")
           }else{
             this.toastrService.error("Login failed due to an internal error try again later.")
           }
-        } 
-      });
+          this.loading=false;
+        }
+        
+      })
+      
     }
   }
 

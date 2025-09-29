@@ -17,6 +17,11 @@ main {
             text-overflow: ellipsis;
         }
 
+        .rotate-element{
+            color: v.$primary-color;
+            font-weight: 500;
+        }
+
         button {
 
             &.edit{

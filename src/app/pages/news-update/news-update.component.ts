@@ -19,6 +19,7 @@ export class NewsUpdateComponent {
 
   id: string | null = null;
   news$!: Observable<News>;
+  loading:boolean = false;
 
   constructor( private activatedRoute:ActivatedRoute,
     private newsService: NewsService,
@@ -33,12 +34,17 @@ export class NewsUpdateComponent {
   }
 
   update(data: NewsDefaultRequest){
+    this.loading = true;
       this.newsService.update(data,this.id).subscribe({
         next: (value: NewsDefaultResponse) => {
           this.toastrService.success("News updated successfully.");
           this.router.navigate([`news/${value.id}`]);
+          this.loading = false;
         },
-        error: () => this.toastrService.error("Error updating news, try again later.")
+        error: () => {
+          this.toastrService.error("Error updating news, try again later.");
+          this.loading = false;
+        }
       });
   
     }

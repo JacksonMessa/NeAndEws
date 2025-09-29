@@ -8,6 +8,7 @@
     [disableSubmitButton]="!registerForm.valid"
     (submit)="onSubmit()"
     (navigate)="onNavigate()"
+    [loading]="loading"
     >
     <form [formGroup]="registerForm">
                     <label for="username">Username</label>

@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class RegisterComponent {
   registerForm!: FormGroup
-
+  loading:boolean = false;
 
 
   constructor(private userService: UserService,
@@ -39,9 +39,14 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       let data: RegisterFormData = this.registerForm.value;
       if (data.password === this.registerForm.value.passwordConfirm) {
+        this.loading = true;
         this.userService.register(data).subscribe({
-          next: () => this.toastrService.success("Your account has been created successfully."),
+          next: () => {
+            this.loading = false;
+            this.toastrService.success("Your account has been created successfully.")
+          },
           error: (value) => {
+            this.loading = false;
             this.toastrService.error("Failed to create account: " + value.message + ".")
           }
         });

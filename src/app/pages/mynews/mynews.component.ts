@@ -8,6 +8,7 @@ import { NewsGetResponse } from '../../types/news-get-response.type';
 import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-mynews',
@@ -23,6 +24,8 @@ import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-
 export class MynewsComponent {
 
   news$!:Observable<NewsGetResponse>;
+  loading:boolean = true;
+  newsExcluding: string = "";
 
   constructor(private newsService:NewsService,
               private toastrService:ToastrService,
@@ -42,8 +45,17 @@ export class MynewsComponent {
 
     this.news$ = this.newsService.getAll(filterData);
     this.news$.subscribe({
-      error : () => this.toastrService.error("Error retrieving news from API.")
+      error : () => {
+        this.toastrService.error("Error retrieving news from API.");
+        this.loading = false;
+      }
     })
+    this.news$.pipe(
+      finalize (() => {
+        this.loading = false;
+      })
+    );
+    
   }
 
   navigateUpdate(id:string){
@@ -51,12 +63,16 @@ export class MynewsComponent {
   }
 
   deleteNews(id: string) {
+    this.newsExcluding = id;
     this.newsService.delete(id).subscribe({
       next: () => {
         this.toastrService.success("News deleted successfully.");
         this.getNews();
       },
-      error: () => this.toastrService.error("Error deleting news, try again later.")
+      error: () => {
+        this.toastrService.error("Error deleting news, try again later.")
+        this.newsExcluding = "";
+      }
     })
   }
   

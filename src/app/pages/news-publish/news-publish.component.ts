@@ -17,6 +17,8 @@ import { NewsFormComponent } from "../../components/news-form/news-form.componen
 
 export class NewsPublishComponent {
 
+  loading:boolean = false;
+
   constructor(private toastrService:ToastrService,
               private router: Router,
               private newsService: NewsService
@@ -24,12 +26,17 @@ export class NewsPublishComponent {
 
 
   publish(data: NewsDefaultRequest){
+    this.loading=true;
     this.newsService.create(data).subscribe({
       next: (value: NewsDefaultResponse) => {
         this.toastrService.success("News published successfully.");
         this.router.navigate([`news/${value.id}`]);
+        this.loading = false;
       },
-      error: () => this.toastrService.error("Error publishing news, try again later.")
+      error: () => {
+        this.toastrService.error("Error publishing news, try again later.");
+        this.loading = false;
+      }
     });
 
   }

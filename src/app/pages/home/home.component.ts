@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { DefaultButton } from "../../components/default-button/default-button";
 import { NewsService } from '../../services/news.service';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -35,6 +35,7 @@ export class HomeComponent {
   filterForm!: FormGroup;
   filterData :GetRequestFilter = {title:null, writer:null, publicationDate:null};
   readonly pageSize:number = 5;
+  loading:boolean = false;
 
   constructor(private newsService: NewsService,
     private toastrService: ToastrService,
@@ -72,9 +73,9 @@ export class HomeComponent {
       })
 
       this.news$ = this.newsService.getAllPaged(this.pageSelected - 1, this.pageSize,this.filterData);
+      this.loading = true;
       this.news$.subscribe({
         next: (value) => {
-
           if(this.pageSelected>value.pagesFound && value.pagesFound>0){
             this.pageNavigate(value.pagesFound.toString());
           }
@@ -117,9 +118,15 @@ export class HomeComponent {
         },
         error: () => {
           this.toastrService.error("Error retrieving news from API.")
+          this.loading = false;
         }
       })
     });
+    this.news$.pipe(
+      finalize (() => {
+        this.loading = false;
+      })
+    )
   }
 
   navigateToNewsDetails(id: string) {

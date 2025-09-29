@@ -6,6 +6,7 @@
     navigateButtonText="Create Your Account"
     navigateButtonIcon="person-add"
     [disableSubmitButton]="!loginForm.valid"
+    [loading]="loading"
     (submit)="onSubmit()"
     (navigate)="onNavigate()"
     >

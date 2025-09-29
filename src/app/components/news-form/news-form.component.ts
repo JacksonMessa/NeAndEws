@@ -27,6 +27,9 @@ export class NewsFormComponent{
   @Input() submitBtnText = "";
   @Output() submit = new EventEmitter<NewsDefaultRequest>()
   @Input() newsId:string | null = null;
+  @Input() loadingSubmit:boolean = false;
+  @Input() loadingNews:boolean = false;
+
 
   newsForm!: FormGroup;
   news$!: Observable<News>;
@@ -43,23 +46,26 @@ export class NewsFormComponent{
 
   ngOnInit(){
     if(this.newsId){
+      this.loadingNews = true;
       this.news$ = this.newsService.get(this.newsId);
-        this.news$.subscribe({
-          next: (value) => {
-            if(!(value.writer === localStorage.getItem("username"))){
-              this.toastrService.error("You don't have permission to edit this news.")
-              this.router.navigate(['/home'])
-            }else{
-              this.newsForm.patchValue({
-                title:value.title,
-                body:value.body
-              })
-            }
-          },
-          error: () => {
-            this.toastrService.error("Error retrieving news from API.")
+      this.news$.subscribe({
+        next: (value) => {
+          if(!(value.writer === localStorage.getItem("username"))){
+            this.toastrService.error("You don't have permission to edit this news.")
+            this.router.navigate(['/home'])
+          }else{
+            this.newsForm.patchValue({
+              title:value.title,
+              body:value.body
+            })
           }
-        });
+          this.loadingNews = false;
+        },
+        error: () => {
+          this.toastrService.error("Error retrieving news from API.");
+          this.loadingNews = false;
+        }
+      });
     }
   }
 

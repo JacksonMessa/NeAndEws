@@ -1,41 +1,49 @@
 <navbar/>
 <main>
 @if(news$ | async; as news){
-    
-    <h1>{{news.title}}</h1>
-    <div class="published-at">Published at: {{news.publishedAt | date:'dd/MM/yyyy HH:mm'}}</div>
-    @for(paragrafh of formatedBody ; track $index){
-        <p>{{paragrafh}}</p>
-    }
-    <div class="row writer-container">
-        <span class="col-lg-8 col-md-6 col-sm-12 written-by">Written by: <a (click)="navigateWriterNews(news.writer)">{{news.writer}}</a></span>
-        @if(isWriterOfThisNews){
-            <default-button class="col-lg-2 col-md-3 col-sm-6 writer-btn" 
-                            size="small" 
-                            text="Edit" 
-                            btnStyle="outline" 
-                            icon="pencil"
-                            (click)="navigateToNewsUpdate(news.id)"
-                            />
-            <default-button class="col-lg-2 col-md-3 col-sm-6 writer-btn" 
-                            size="small" 
-                            text="Delete" 
-                            btnStyle="outline" 
-                            icon="trash"
-                            
-                            data-bs-toggle="modal" 
-                            data-bs-target="#confirmDialog"
-                            />
+    @if(!loadingDelete){
+        <h1>{{news.title}}</h1>
+        <div class="published-at">Published at: {{news.publishedAt | date:'dd/MM/yyyy HH:mm'}}</div>
+        @for(paragrafh of formatedBody ; track $index){
+            <p>{{paragrafh}}</p>
         }
-        <confirm-dialog 
-            text="If you delete this news, it will never be visible to you or any other user again. Are you sure you want to delete it?"
-            [title]="'Deleting News'"
-            (confirm)="deleteNews(news.id)"
-        />
-        
-    </div>
+        <div class="row writer-container">
+            <span class="col-lg-8 col-md-6 col-sm-12 written-by">Written by: <a (click)="navigateWriterNews(news.writer)">{{news.writer}}</a></span>
+            @if(isWriterOfThisNews){
+                <default-button class="col-lg-2 col-md-3 col-sm-6 writer-btn" 
+                                size="small" 
+                                text="Edit" 
+                                btnStyle="outline" 
+                                icon="pencil"
+                                (click)="navigateToNewsUpdate(news.id)"
+                                />
+                <default-button class="col-lg-2 col-md-3 col-sm-6 writer-btn" 
+                                size="small" 
+                                text="Delete" 
+                                btnStyle="outline" 
+                                icon="trash"
+                                
+                                data-bs-toggle="modal" 
+                                data-bs-target="#confirmDialog"
+                                />
+            }
+            <confirm-dialog 
+                text="If you delete this news, it will never be visible to you or any other user again. Are you sure you want to delete it?"
+                [title]="'Deleting News'"
+                (confirm)="deleteNews(news.id)"
+            />
+            
+        </div>
+    }@else {
+        <h1>This news is being deleted <span class="rotate-element">C</span></h1>
+    }
+    
     
 }@else {
-    <h1 class="text-center">News Not Found</h1>
+    @if (loadingNews) {
+        <h1 class="text-center">Loading <span class="rotate-element">C</span></h1>
+    }@else {
+        <h1 class="text-center">News Not Found</h1>
+    }
 }
 </main>
